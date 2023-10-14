@@ -5,25 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-public class Account {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Account extends AbstractEntity{
 
     private String iban;
-
-    private LocalDateTime creationDate;
-
-    private LocalDateTime lastUpdated;
 
     @OneToOne
     @JoinColumn(name = "user_id")

@@ -5,20 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "_user")
-public class User {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class User extends AbstractEntity{
 
     private String firstName;
 

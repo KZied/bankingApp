@@ -5,17 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-public class Contact {
-
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Contact extends AbstractEntity{
 
     private String firstName;
 
