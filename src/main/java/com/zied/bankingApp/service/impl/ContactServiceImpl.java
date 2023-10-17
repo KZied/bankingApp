@@ -1,6 +1,5 @@
 package com.zied.bankingApp.service.impl;
 
-import com.zied.bankingApp.dto.AddressDto;
 import com.zied.bankingApp.dto.ContactDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.Contact;
@@ -44,5 +43,13 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public void delete(Integer id) {
         contactRepository.deleteById(id);
+    }
+
+    @Override
+    public List<ContactDto> findAllByUserId(Integer userId) {
+        return contactRepository.findAllByUserId(userId)
+                .stream()
+                .map(ContactDto::fromEntity)
+                .collect(Collectors.toList());
     }
 }

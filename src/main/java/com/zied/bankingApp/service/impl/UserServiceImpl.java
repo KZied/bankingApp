@@ -1,9 +1,12 @@
 package com.zied.bankingApp.service.impl;
 
+import com.zied.bankingApp.dto.AccountDto;
 import com.zied.bankingApp.dto.UserDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.User;
+import com.zied.bankingApp.repositories.AccountRepository;
 import com.zied.bankingApp.repositories.UserRepository;
+import com.zied.bankingApp.service.AccountService;
 import com.zied.bankingApp.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +20,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final AccountService accountService;
     private final ObjectsValidator<UserDto> validator;
 
 
@@ -46,5 +50,28 @@ public class UserServiceImpl implements UserService {
     public void delete(Integer id) {
         // toDo check before delete
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public Integer validateAccount(Integer id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("No user was found for user account validation"));
+        user.setActive(true);
+        // create bank account
+        AccountDto accountDto = AccountDto.builder()
+                        .userDto(UserDto.fromEntity(user))
+                        .build();
+        accountService.save(accountDto);
+        userRepository.save(user);
+        return user.getId();
+    }
+
+    @Override
+    public Integer InvalidateAccount(Integer id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("No user was found for user account validation"));
+        user.setActive(false);
+        userRepository.save(user);
+        return user.getId();
     }
 }

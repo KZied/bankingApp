@@ -36,6 +36,15 @@ public class AccountServiceImpl implements AccountService {
         }
         validator.validate(dto);
         Account account = AccountDto.toEntity(dto);
+        boolean userHasAlreadyAnAccount = accountRepository.findByUserId(account.getUser().getId()).isPresent();
+        if(userHasAlreadyAnAccount){
+            throw new OperationNonPermittedException(
+                    "The selected user has already an active account",
+                    "Create account",
+                    "Account service",
+                    "Account creation"
+            );
+        }
         // another way to block iban update is ti check: if(dto.getId() == null)
         account.setIban(generateRandomIban());
         return accountRepository.save(account).getId();
