@@ -1,10 +1,7 @@
 package com.zied.bankingApp.dto;
 
 import com.zied.bankingApp.models.User;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Getter
@@ -14,13 +11,28 @@ import lombok.*;
 public class UserDto {
 
     private Integer id;
-    
+
+    // NotBlank = does not contain white spaces
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private String firstName;
 
+    @NotNull
+    @NotEmpty
+    @NotBlank(message = "Last_Name_Mandatory")
     private String lastName;
 
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @Email
     private String email;
 
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @Size(min = 8, max = 16)
     private String password;
 
     public static UserDto fromEntity (User user){

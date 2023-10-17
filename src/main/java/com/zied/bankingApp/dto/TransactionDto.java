@@ -3,6 +3,9 @@ package com.zied.bankingApp.dto;
 import com.zied.bankingApp.models.Transaction;
 import com.zied.bankingApp.models.TransactionType;
 import com.zied.bankingApp.models.User;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +21,9 @@ public class TransactionDto {
 
     private Integer id;
 
+    @Positive
+    @Max(value = 1000000000)
+    @Min(value = 100)
     private BigDecimal amount;
 
     private TransactionType type;
