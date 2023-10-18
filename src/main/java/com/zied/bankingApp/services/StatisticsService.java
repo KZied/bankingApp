@@ -1,4 +1,4 @@
-package com.zied.bankingApp.service;
+package com.zied.bankingApp.services;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

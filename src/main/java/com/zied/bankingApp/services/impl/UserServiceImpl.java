@@ -1,13 +1,12 @@
-package com.zied.bankingApp.service.impl;
+package com.zied.bankingApp.services.impl;
 
 import com.zied.bankingApp.dto.AccountDto;
 import com.zied.bankingApp.dto.UserDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.User;
-import com.zied.bankingApp.repositories.AccountRepository;
 import com.zied.bankingApp.repositories.UserRepository;
-import com.zied.bankingApp.service.AccountService;
-import com.zied.bankingApp.service.UserService;
+import com.zied.bankingApp.services.AccountService;
+import com.zied.bankingApp.services.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

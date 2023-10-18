@@ -1,11 +1,11 @@
-package com.zied.bankingApp.service.impl;
+package com.zied.bankingApp.services.impl;
 
 import com.zied.bankingApp.dto.AccountDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.exceptions.OperationNonPermittedException;
 import com.zied.bankingApp.models.Account;
 import com.zied.bankingApp.repositories.AccountRepository;
-import com.zied.bankingApp.service.AccountService;
+import com.zied.bankingApp.services.AccountService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.iban4j.CountryCode;

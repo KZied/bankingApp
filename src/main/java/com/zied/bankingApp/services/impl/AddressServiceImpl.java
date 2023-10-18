@@ -1,10 +1,10 @@
-package com.zied.bankingApp.service.impl;
+package com.zied.bankingApp.services.impl;
 
 import com.zied.bankingApp.dto.AddressDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.Address;
 import com.zied.bankingApp.repositories.AddressRepository;
-import com.zied.bankingApp.service.AddressService;
+import com.zied.bankingApp.services.AddressService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

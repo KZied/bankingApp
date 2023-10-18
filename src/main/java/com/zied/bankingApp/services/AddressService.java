@@ -1,4 +1,4 @@
-package com.zied.bankingApp.service;
+package com.zied.bankingApp.services;
 
 import com.zied.bankingApp.dto.AddressDto;
 

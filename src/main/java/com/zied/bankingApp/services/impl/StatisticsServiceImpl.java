@@ -1,8 +1,8 @@
-package com.zied.bankingApp.service.impl;
+package com.zied.bankingApp.services.impl;
 
 import com.zied.bankingApp.models.TransactionType;
 import com.zied.bankingApp.repositories.TransactionRepository;
-import com.zied.bankingApp.service.StatisticsService;
+import com.zied.bankingApp.services.StatisticsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

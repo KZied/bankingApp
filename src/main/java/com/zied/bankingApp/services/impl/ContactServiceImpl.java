@@ -1,10 +1,10 @@
-package com.zied.bankingApp.service.impl;
+package com.zied.bankingApp.services.impl;
 
 import com.zied.bankingApp.dto.ContactDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.Contact;
 import com.zied.bankingApp.repositories.ContactRepository;
-import com.zied.bankingApp.service.ContactService;
+import com.zied.bankingApp.services.ContactService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
