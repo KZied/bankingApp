@@ -6,5 +6,5 @@ public interface UserService extends AbstractService <UserDto> {
 
     Integer validateAccount(Integer id);
 
-    Integer InvalidateAccount(Integer id);
+    Integer invalidateAccount(Integer id);
 }
