@@ -19,25 +19,26 @@ public class UserDto {
     private String firstName;
 
     @NotNull
-    @NotEmpty
-    @NotBlank(message = "Last_Name_Mandatory")
+    @NotEmpty(message = "Last name cannot be empty")
+    @NotBlank(message = "Last name cannot be blank")
     private String lastName;
 
     @NotNull
     @NotEmpty
     @NotBlank
-    @Email
+    @Email(message = "email format is invalid")
     private String email;
 
     @NotNull
     @NotEmpty
     @NotBlank
-    @Size(min = 8, max = 16)
+    @Size(min = 8, max = 16, message = "password's size has to be between 8 and 16 characters")
     private String password;
 
     public static UserDto fromEntity (User user){
         // null check
         return UserDto.builder()
+                .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
@@ -48,6 +49,7 @@ public class UserDto {
     public static User toEntity (UserDto userDto){
         // null check
         return User.builder()
+                .id(userDto.getId())
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
                 .email(userDto.getEmail())
