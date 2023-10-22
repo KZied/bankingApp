@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 
@@ -39,5 +40,5 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "select * from _user u inner join Account a on u.id = a.user.id where a.iban = :iban",nativeQuery = true)
     List<User> searchByIBanNative(String iban);
 
-
+    Optional<User> findByEmail(String email);
 }
