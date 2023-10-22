@@ -1,5 +1,6 @@
 package com.zied.bankingApp.services.impl;
 
+import com.zied.bankingApp.dto.TransactionSumDetails;
 import com.zied.bankingApp.models.TransactionType;
 import com.zied.bankingApp.repositories.TransactionRepository;
 import com.zied.bankingApp.services.StatisticsService;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -19,11 +21,10 @@ public class StatisticsServiceImpl implements StatisticsService {
     private final TransactionRepository transactionRepository;
     
     @Override
-    public Map<LocalDate, BigDecimal> findSumTransactionsByDate(LocalDate startDate, LocalDate endDate, Integer userId) {
+    public List<TransactionSumDetails> findSumTransactionsByDate(LocalDate startDate, LocalDate endDate, Integer userId) {
         LocalDateTime start = LocalDateTime.of(startDate, LocalTime.of(0,0,0));
         LocalDateTime end = LocalDateTime.of(endDate, LocalTime.of(23,59,59));
-        transactionRepository.findSumTransactionsByDate(start, end, userId);
-        return null;
+        return transactionRepository.findSumTransactionsByDate(start, end, userId);
     }
 
     @Override

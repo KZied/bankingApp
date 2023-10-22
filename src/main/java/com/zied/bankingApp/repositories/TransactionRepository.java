@@ -1,5 +1,6 @@
 package com.zied.bankingApp.repositories;
 
+import com.zied.bankingApp.dto.TransactionSumDetails;
 import com.zied.bankingApp.models.Transaction;
 import com.zied.bankingApp.models.TransactionType;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,7 +22,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     @Query("select max(abs(t.amount)) from Transaction t where t.user.id = :userId and t.type =:transactionType")
     BigDecimal findHighestAmountByTransactionType(Integer userId, TransactionType transactionType);
 
-    @Query("select t.createdDated, sum(t.amount) from Transaction t where t.user.id = :userId and  t.createdDated" +
-            " between :startDate and :endDate group by t.createdDated")
-    Map<LocalDate, BigDecimal> findSumTransactionsByDate(LocalDateTime startDate, LocalDateTime endDate, Integer userId);
+    @Query("select t.transactionDate as transactionDate, sum(t.amount) as amount from Transaction t where t.user.id = :userId and  t.createdDated" +
+            " between :startDate and :endDate group by t.transactionDate")
+    List<TransactionSumDetails> findSumTransactionsByDate(LocalDateTime startDate, LocalDateTime endDate, Integer userId);
 }
