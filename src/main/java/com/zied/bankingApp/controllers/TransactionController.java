@@ -16,7 +16,7 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @PostMapping("/")
-    public ResponseEntity<Integer> save(TransactionDto transactionDto){
+    public ResponseEntity<Integer> save(@RequestBody TransactionDto transactionDto){
         return ResponseEntity.ok(transactionService.save(transactionDto));
     }
 
