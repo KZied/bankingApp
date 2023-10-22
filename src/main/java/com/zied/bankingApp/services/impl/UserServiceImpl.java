@@ -6,7 +6,9 @@ import com.zied.bankingApp.dto.AuthenticationRequest;
 import com.zied.bankingApp.dto.AuthenticationResponse;
 import com.zied.bankingApp.dto.UserDto;
 import com.zied.bankingApp.exceptions.ObjectsValidator;
+import com.zied.bankingApp.models.Role;
 import com.zied.bankingApp.models.User;
+import com.zied.bankingApp.repositories.RoleRepository;
 import com.zied.bankingApp.repositories.UserRepository;
 import com.zied.bankingApp.services.AccountService;
 import com.zied.bankingApp.services.UserService;
@@ -20,7 +22,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +37,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
     private final AuthenticationManager authenticationManager;
+    private final RoleRepository roleRepository;
 
 
     @Override
@@ -96,7 +101,11 @@ public class UserServiceImpl implements UserService {
         validator.validate(dto);
         User user = UserDto.toEntity(dto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(findOrCreateRole("ROLE_USER"));
         var savedUser = userRepository.save(user);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", savedUser.getId());
+        claims.put("fullName",savedUser.getFirstName() + " " + savedUser.getLastName());
         String token = jwtUtils.generateToken(savedUser);
         return AuthenticationResponse.builder()
                 .token(token)
@@ -109,10 +118,24 @@ public class UserServiceImpl implements UserService {
                 new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
                         authenticationRequest.getPassword())
         );
-        final UserDetails user = userRepository.findByEmail(authenticationRequest.getEmail()).get();
+        final User user = userRepository.findByEmail(authenticationRequest.getEmail()).get();
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("userId", user.getId());
+        claims.put("fullName",user.getFirstName() + " " + user.getLastName());
         final String token = jwtUtils.generateToken(user);
         return AuthenticationResponse.builder()
                         .token(token)
                         .build();
+    }
+
+    private Role findOrCreateRole (String roleName) {
+        Role role = roleRepository.findByName(roleName)
+                .orElse(null);
+        if (role == null) {
+            return roleRepository.save(Role.builder()
+                    .name(roleName)
+                    .build());
+        }
+        return role;
     }
 }

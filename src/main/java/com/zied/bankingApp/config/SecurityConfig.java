@@ -38,17 +38,16 @@ public class SecurityConfig {
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
-                                .and()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .cors(Customizer.withDefaults())
+//                .cors(Customizer.withDefaults())
         ;
         return http.build();
     }
 
-    @Bean
+//    @Bean
     public CorsFilter corsFilter() {
         // toDo --> to be implemented
         return null;
