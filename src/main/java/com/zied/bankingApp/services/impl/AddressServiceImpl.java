@@ -5,10 +5,10 @@ import com.zied.bankingApp.exceptions.ObjectsValidator;
 import com.zied.bankingApp.models.Address;
 import com.zied.bankingApp.repositories.AddressRepository;
 import com.zied.bankingApp.services.AddressService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 

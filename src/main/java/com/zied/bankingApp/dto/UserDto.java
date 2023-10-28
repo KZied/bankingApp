@@ -1,8 +1,9 @@
 package com.zied.bankingApp.dto;
 
 import com.zied.bankingApp.models.User;
-import jakarta.validation.constraints.*;
 import lombok.*;
+
+import javax.validation.constraints.*;
 
 @Getter
 @Setter

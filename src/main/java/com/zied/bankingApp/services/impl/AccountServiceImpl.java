@@ -6,12 +6,12 @@ import com.zied.bankingApp.exceptions.OperationNonPermittedException;
 import com.zied.bankingApp.models.Account;
 import com.zied.bankingApp.repositories.AccountRepository;
 import com.zied.bankingApp.services.AccountService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.iban4j.CountryCode;
 import org.iban4j.Iban;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 

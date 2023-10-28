@@ -3,14 +3,14 @@ package com.zied.bankingApp.dto;
 import com.zied.bankingApp.models.Transaction;
 import com.zied.bankingApp.models.TransactionType;
 import com.zied.bankingApp.models.User;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

@@ -6,10 +6,10 @@ import com.zied.bankingApp.models.Transaction;
 import com.zied.bankingApp.models.TransactionType;
 import com.zied.bankingApp.repositories.TransactionRepository;
 import com.zied.bankingApp.services.TransactionService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,7 @@
 package com.zied.bankingApp.services.auth;
 
 import com.zied.bankingApp.repositories.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
