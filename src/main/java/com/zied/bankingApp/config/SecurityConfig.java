@@ -36,7 +36,20 @@ public class SecurityConfig {
                         (request) ->
                         {
                             try {
-                                request.antMatchers("/**/auth", "/**/register")
+                                request.antMatchers("/**/authenticate",
+                                                "/**/register",
+                                                // resources for swagger to work properly
+                                                "/v2/api-docs",
+                                                "/v3/api-docs",
+                                                "/v3/api-docs/**",
+                                                "/swagger-resources",
+                                                "/swagger-resources/**",
+                                                "/configuration/ui",
+                                                "/configuration/security",
+                                                "/swagger-ui/**",
+                                                "/webjars/**",
+                                                "/swagger-ui.html"
+                                                )
                                         .permitAll()
                                         .anyRequest()
                                         .authenticated()
