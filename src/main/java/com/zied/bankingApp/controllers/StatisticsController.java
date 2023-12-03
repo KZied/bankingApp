@@ -2,6 +2,7 @@ package com.zied.bankingApp.controllers;
 
 import com.zied.bankingApp.dto.TransactionSumDetails;
 import com.zied.bankingApp.services.StatisticsService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/statistics")
 @AllArgsConstructor
+@Tag(name = "statistics")
 public class StatisticsController {
 
     private final StatisticsService statisticsService;

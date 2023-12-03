@@ -2,6 +2,7 @@ package com.zied.bankingApp.controllers;
 
 import com.zied.bankingApp.dto.AddressDto;
 import com.zied.bankingApp.services.AddressService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/addresses")
 @AllArgsConstructor
+@Tag(name = "address")
 public class AddressController {
 
     private AddressService addressService;

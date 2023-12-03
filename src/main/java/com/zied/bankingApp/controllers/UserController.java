@@ -2,6 +2,7 @@ package com.zied.bankingApp.controllers;
 
 import com.zied.bankingApp.dto.UserDto;
 import com.zied.bankingApp.services.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Tag(name = "user")
 public class UserController {
 
     private final UserService userService;

@@ -9,3 +9,5 @@ spring:
       ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+springdoc:
+  default-produces-media-type: application/json

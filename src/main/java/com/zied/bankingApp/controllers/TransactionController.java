@@ -2,6 +2,7 @@ package com.zied.bankingApp.controllers;
 
 import com.zied.bankingApp.dto.TransactionDto;
 import com.zied.bankingApp.services.TransactionService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/transactions")
 @AllArgsConstructor
+@Tag(name = "transaction")
 public class TransactionController {
 
     private final TransactionService transactionService;
