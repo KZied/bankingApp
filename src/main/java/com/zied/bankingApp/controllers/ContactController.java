@@ -32,7 +32,7 @@ public class ContactController {
         return ResponseEntity.ok(contactService.findById(contactId));
     }
 
-    @GetMapping("/users/user-id")
+    @GetMapping("/users/{user-id}")
     public ResponseEntity<List<ContactDto>> findByUserId(@PathVariable("user-id") Integer userId){
         return ResponseEntity.ok(contactService.findAllByUserId(userId));
     }
