@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", user.getId());
         claims.put("fullName",user.getFirstName() + " " + user.getLastName());
-        final String token = jwtUtils.generateToken(user);
+        final String token = jwtUtils.generateToken(user, claims);
         return AuthenticationResponse.builder()
                         .token(token)
                         .build();
