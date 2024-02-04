@@ -51,7 +51,7 @@ public class TransactionDto {
                 .id(transactionDto.getId())
                 .amount(transactionDto.getAmount())
                 .type(transactionDto.getType())
-                .transactionDate(transactionDto.getTransactionDate())
+                .transactionDate(LocalDate.now())
                 .destinationIban(transactionDto.getDestinationIban())
                 .user(
                         User.builder()

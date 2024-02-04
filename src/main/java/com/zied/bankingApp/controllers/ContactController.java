@@ -18,7 +18,7 @@ public class ContactController {
     private final ContactService contactService;
 
     @PostMapping("/")
-    public ResponseEntity<Integer> save(ContactDto contactDto){
+    public ResponseEntity<Integer> save(@RequestBody ContactDto contactDto){
         return ResponseEntity.ok(contactService.save(contactDto));
     }
 
